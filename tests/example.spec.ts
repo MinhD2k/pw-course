@@ -17,3 +17,4 @@ test('get started link', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'User Registration' })).toBeVisible();
 });
 // updated at 14h26 25/3/2026
+//test merge code from branch minh_1 to main
