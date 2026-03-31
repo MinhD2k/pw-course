@@ -8,9 +8,9 @@ test("Bài tập 2 - Thêm sản phẩm", async ({ page }) => {
   });
 // ===== STEP 2: Thêm sản phẩm =====
   await test.step('STEP 2: Thêm sản phẩm ', async () => {
-    await page.locator('//button[@data-product-id="1"]').click();
-    await page.locator('//button[@data-product-id="1"]').click();
-    for (let i = 0; i < 3; i++) //thêm 3 sản phẩm số 2
+    await page.locator('//button[@data-product-id="1"]').click({clickCount: 2}); //cách 1 dùng click count để thêm 2 sp
+    
+    for (let i = 0; i < 3; i++) //thêm 3 sản phẩm số 2 (biết thêm cách thôi chứ k clean code)
         {
         await page.locator('//button[@data-product-id="2"]').click();
         }
