@@ -13,7 +13,7 @@ test("Bài tập 4 - Personal notes", async ({ page }) => {
         { title: "Hình dung con đường, cách thiết kế chương trình công nghệ chiến lược", content: "Bộ trưởng Khoa học và Công nghệ Nguyễn Mạnh Hùng nhận định Việt Nam đã hình dung ra khá đầy đủ con đường phát triển công nghệ chiến lược (CNCL)."},
         { title: "Tiêu đề số 2", content: "Nội dung số 2"}
     ];
-    for (const note of notes) {
+    for (const note of notes) { //dùng hàm này khi đẩy mảng dữ liệu
         await page.locator('//input[@id="note-title"]').fill(note.title);
         await page.locator('//textarea[@id="note-content"]').fill(note.content);
         await page.locator('//button[@id="add-note"]').click();

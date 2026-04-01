@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+const username = "dinhminh.test";
+const email = "dinhminh.test@gmail.com";
 
 test("Bài tập 1 - Input full data resister page", async ({ page }) => {
 // ===== STEP 1: Navigate =====
@@ -8,11 +10,11 @@ test("Bài tập 1 - Input full data resister page", async ({ page }) => {
   });
 // ===== STEP 2: Fill basic info =====
   await test.step('STEP 2: Fill basic info', async () => {
-    await page.locator('//input[@id="username"]').pressSequentially("dinhminh.test", {
+    await page.locator('//input[@id="username"]').pressSequentially(username, {
       delay: 200,
     });
 
-    await page.locator('//input[@id="email"]').pressSequentially("dinhminh.test@gmail.com", {
+    await page.locator('//input[@id="email"]').pressSequentially(email, {
       delay: 200,
     });
 
@@ -70,3 +72,10 @@ test("Bài tập 1 - Input full data resister page", async ({ page }) => {
   });
 
 });
+
+test("Kiểm tra data sau khi register thành công", async ({ page }) => {
+
+  await test.step('Check username', async () => {
+    await expect(body).toHaveText(`${username}`);
+  });
+})
