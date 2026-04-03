@@ -1,4 +1,4 @@
-import { test, Page } from '@playwright/test';
+import { test, Page, expect } from '@playwright/test';
 const username = "dinhminh";
 const email = "minh.dinh@sotatek.com";
 const password = "123456Aa@";
@@ -99,4 +99,21 @@ test("Test 4: Xóa cmt 2 và 5", async ({ page }) => {
 
         await commentItem5.locator('.ion-trash-a').click();
 })
-    
+
+test("Handle tab mới đc mở ra sau khi click", async ({ page }) => {
+  await test.step("Open main tab", async () => {
+    await page.goto("https://material.playwrightvn.com/06-new-tab.html");
+  });
+
+  await test.step("Mở trang Google", async () => {
+    const [newPage] = await Promise.all([
+      page.waitForEvent("popup"),
+      page.locator('a[href="https://www.google.com"]').click()
+    ]);
+
+    await newPage.waitForLoadState();
+
+    // Ví dụ verify
+    await expect(newPage).toHaveURL(/google/);
+  });
+});
